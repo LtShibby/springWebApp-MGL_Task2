@@ -1,5 +1,10 @@
 com\MGL_Task2\service\Game_Service.class
 com\MGL_Task2\controller\MGL_Task2_Controller.class
+com\MGL_Task2\dao\GameDao.class
 com\MGL_Task2\service\Game_Service_Impl.class
-com\MGL_Task2\model\Game.class
 com\MGL_Task2\model\Review.class
+com\MGL_Task2\configuration\WebAppConfig.class
+com\MGL_Task2\configuration\ApplicationInitializer.class
+com\MGL_Task2\configuration\HibernateConfiguration.class
+com\MGL_Task2\dao\GameDaoImpl.class
+com\MGL_Task2\model\Game.class
