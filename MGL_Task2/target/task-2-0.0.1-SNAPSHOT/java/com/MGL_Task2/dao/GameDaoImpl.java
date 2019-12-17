@@ -2,8 +2,10 @@ package com.MGL_Task2.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +22,7 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
-    public void addGame(Game game) {
+    public void saveGame(Game game) {
 	System.out.println(game.toString());
 	getCurrentSession().save(game);
     }
@@ -51,5 +53,15 @@ public class GameDaoImpl implements GameDao {
     @SuppressWarnings("unchecked")
     public List<Game> listGames() {
 	return getCurrentSession().createQuery("from Game").list();
+    }
+
+    @Override
+    public Game getGameByName(String game_name) {
+	@SuppressWarnings("deprecation")
+	Criteria cr = getCurrentSession().createCriteria(Game.class);
+	cr.add(Restrictions.ilike("game_name", game_name));
+
+	List<?> result = cr.list();
+	return (Game) result.get(0);
     }
 }

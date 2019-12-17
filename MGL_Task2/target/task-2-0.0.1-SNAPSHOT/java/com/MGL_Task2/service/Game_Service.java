@@ -6,7 +6,7 @@ import com.MGL_Task2.model.Game;
 
 public interface Game_Service {
 
-    void addGame(Game game);
+    void saveGame(Game game);
 
     void updateGame(Game game);
 
@@ -15,5 +15,7 @@ public interface Game_Service {
     void deleteGame(Long id);
 
     List<Game> listGames();
+
+    Game getGameByName(String game_name);
 
 }

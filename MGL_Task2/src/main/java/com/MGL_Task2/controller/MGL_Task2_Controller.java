@@ -21,7 +21,7 @@ import com.MGL_Task2.service.Game_Service;
 public class MGL_Task2_Controller {
 
     @Autowired
-    private Game_Service javaGameService;
+    private Game_Service gameService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String landing() {
@@ -63,12 +63,12 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
-	return new ResponseEntity<>(javaGameService.listGames(), HttpStatus.OK);
+	return new ResponseEntity<>(gameService.listGames(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createGame(@RequestBody Game game) {
-	javaGameService.addGame(game);
+	gameService.saveGame(game);
 	return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

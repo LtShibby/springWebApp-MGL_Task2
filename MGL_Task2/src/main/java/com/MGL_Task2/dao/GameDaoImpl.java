@@ -2,6 +2,11 @@ package com.MGL_Task2.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +25,27 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
-    public void addGame(Game game) {
+    public void saveGame(Game game) {
 	System.out.println(game.toString());
 	getCurrentSession().save(game);
     }
 
     @Override
     public void updateGame(Game game) {
-	Game gameToUpdate = getGame(game.getGame_id());
-	gameToUpdate.setGame_name(game.getGame_name());
-	gameToUpdate.setGame_genre(game.getGame_genre());
-	getCurrentSession().update(gameToUpdate);
+
+	CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
+	CriteriaUpdate<Game> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Game.class);
+	Root<Game> rootGame = criteriaUpdate.from(Game.class);
+	criteriaUpdate.set("game_name", game.getGame_name());
+	criteriaUpdate.set("game_genre", game.getGame_genre());
+	criteriaUpdate.where(criteriaBuilder.equal(rootGame.get("game_id"), game.getGame_id()));
+
+	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();
+
+//	Game gameToUpdate = getGame(game.getGame_id());
+//	gameToUpdate.setGame_name(game.getGame_name());
+//	gameToUpdate.setGame_genre(game.getGame_genre());
+//	getCurrentSession().update(gameToUpdate);
     }
 
     @Override
@@ -40,11 +55,20 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
-    public void deleteGame(Long id) {
-	Game game = getGame(id);
+    public void deleteGame(Long game_id) {
+
+	Game game = getGame(game_id);
+
 	if (game != null) {
-	    getCurrentSession().delete(game);
+	    Query hqlQuery = getCurrentSession().createQuery("delete Game where game_id = :game_id");
+	    hqlQuery.setParameter("game_id", game_id);
+	    hqlQuery.executeUpdate();
 	}
+//
+//	Game game = getGame(id);
+//	if (game != null) {
+//	    getCurrentSession().delete(game);
+//	}
     }
 
     @Override

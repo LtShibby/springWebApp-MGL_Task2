@@ -18,8 +18,8 @@ public class Game_Service_Impl implements Game_Service {
     private GameDao gameDao;
 
     @Override
-    public void addGame(Game game) {
-	gameDao.addGame(game);
+    public void saveGame(Game game) {
+	gameDao.saveGame(game);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class Game_Service_Impl implements Game_Service {
     @Override
     public List<Game> listGames() {
 	return gameDao.listGames();
+    }
+
+    @Override
+    public Game getGameByName(String game_name) {
+	return gameDao.getGameByName(game_name);
     }
 
 }

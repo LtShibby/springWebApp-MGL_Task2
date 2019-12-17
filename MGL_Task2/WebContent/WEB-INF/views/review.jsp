@@ -39,6 +39,8 @@ body {
 		<a class="nav-item nav-link" href="games">Games</a> 
 		<a class="nav-item nav-link" href="review">Review</a> 
 		<a class="nav-item nav-link" href="gameList">Game list</a> 
+		<a class="nav-item nav-link" href="game/list">list-games</a> 
+		<a class="nav-item nav-link" href="game/showForm">game-form</a> 
 		<br>
 	</nav>
 	<div id="ReviewFormDiv" class="container">
