@@ -42,9 +42,4 @@ public class Game_Service_Impl implements Game_Service {
 	return gameDao.listGames();
     }
 
-    @Override
-    public Game getGameByName(String game_name) {
-	return gameDao.getGameByName(game_name);
-    }
-
 }

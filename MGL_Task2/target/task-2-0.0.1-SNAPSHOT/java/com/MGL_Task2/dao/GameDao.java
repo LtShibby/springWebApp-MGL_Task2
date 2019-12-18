@@ -16,6 +16,4 @@ public interface GameDao {
 
     List<Game> listGames();
 
-    Game getGameByName(String game_name);
-
 }

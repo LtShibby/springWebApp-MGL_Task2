@@ -16,6 +16,4 @@ public interface Game_Service {
 
     List<Game> listGames();
 
-    Game getGameByName(String game_name);
-
 }

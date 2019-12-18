@@ -20,7 +20,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<title>Mist Library Task 1-Landing</title>
+<title>Mist Library Task 2 - New Game Form</title>
 <style type="text/css">
 body {
 	background-image:
@@ -34,53 +34,44 @@ body {
 <body>
 	<nav id="MistLibrary-navbar"
 		class="navbar navbar-expand-md navbar-dark bg-dark">
-		<a class="navbar-brand" href="index"> <img
+		<a class="navbar-brand" href="../home"> <img
 			src="../resources/images/MGLlogo.png" width="90" height="60" alt="">
-		</a> <a class="nav-item nav-link" href="games">Games</a> <a
-			class="nav-item nav-link" href="review">Review</a> <a
-			class="nav-item nav-link" href="gameList">Game list</a> <a
-			class="nav-item nav-link" href="list">list-games</a> <a
-			class="nav-item nav-link" href="game-form">game-form</a> <br>
+		</a> <a class="nav-item nav-link" href="../games">Games</a> <a
+			class="nav-item nav-link" href="../review">Review</a> <a
+			class="nav-item nav-link" href="list">Game List</a> <br>
 	</nav>
-div class="container">
-  <div class="col-md-offset-2 col-md-7">
-   <h2 class="text-center"> GAME FORM PAGE</h2>
-   <div class="panel panel-info">
-    <div class="panel-heading">
-     <div class="panel-title">Add Game</div>
-    </div>
-    <div class="panel-body">
-     <form:form action="saveGame" cssClass="form-horizontal"
-      method="post" modelAttribute="game">
+	<br>
+	<div class="container">
+		<div class="panel-heading text-light">
+			<h2>New Game Form</h2>
+			<div class="panel-body">
+				<form:form action="saveGame" cssClass="form-horizontal"
+					method="post" modelAttribute="game">
 
-      <!-- need to associate this data with game id -->
-      <form:hidden path="game_id" />
+					<!-- need to associate this data with game id -->
+					<div>
+						<form:hidden path="game_id" />
+					</div>
 
-      <div class="form-group">
-       <label for="game_name" class="col-md-3 control-label">First
-        Name</label>
-       <div class="col-md-9">
-        <form:input path="game_name" cssClass="form-control" />
-       </div>
-      </div>
-      <div class="form-group">
-       <label for="game_genre" class="col-md-3 control-label">Last
-        Name</label>
-       <div class="col-md-9">
-        <form:input path="game_genre" cssClass="form-control" />
-       </div>
-      </div>
-
-      <div class="form-group">
-       <!-- Button -->
-       <div class="col-md-offset-3 col-md-9">
-        <form:button cssClass="btn btn-primary">Submit</form:button>
-       </div>
-      </div>
-
-     </form:form>
-    </div>
-   </div>
-  </div>
+					<table class="table table-dark text-light">
+						<tr>
+							<td><label>Game Name*</label></td>
+							<td><form:input path="game_name" cssClass="form-control" /></td>
+						</tr>
+						<tr>
+							<td><label>Game Genre</label></td>
+							<td><form:input path="game_genre" cssClass="form-control" /></td>
+						</tr>
+						<tr>
+							<td>
+								<form:button class="btn btn-primary">Submit Game</form:button>
+							</td>
+						</tr>
+					</table>
+				</form:form>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

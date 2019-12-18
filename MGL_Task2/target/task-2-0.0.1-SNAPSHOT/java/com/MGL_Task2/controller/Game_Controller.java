@@ -48,32 +48,25 @@ public class Game_Controller {
 //    }
 
     @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
-    public String showFormForUpdate(@RequestParam("game_id") long game_id, Model theModel) {
+    public String updateForm(@RequestParam("game_id") long game_id, Model theModel) {
 	Game game = gameService.getGame(game_id);
+	gameService.updateGame(game);
 	theModel.addAttribute("game", game);
-	return "game-form";
+	return "game-update-form";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteGame", method = RequestMethod.GET)
     public String deleteGame(@RequestParam("game_id") long game_id) {
 	System.out.println("game_id to delete: " + game_id);
 	gameService.deleteGame(game_id);
 	return "redirect:/game/list";
     }
 
-//    @RequestMapping(value = "/updateGame", method = { RequestMethod.PUT, RequestMethod.POST })
-//    public String updateGame(@ModelAttribute("game") Game game, ModelMap model) {
-//	Game updatedGame = gameService.getGameByName(game.getGame_name());
-//	System.out.println("Game name to update: " + game.getGame_name());
-//	System.out.println("Game genre to update: " + game.getGame_genre());
-//	System.out.println("Game id to update: " + game.getGame_id());
-//	System.out.println("Game name to update: " + updatedGame.getGame_name());
-//	System.out.println("Game genre to update: " + updatedGame.getGame_genre());
-//	System.out.println("Game id to update: " + updatedGame.getGame_id());
-//	game.setGame_id(updatedGame.getGame_id());
-//	gameService.updateGame(game);
-//	model.addAttribute("success", "Game " + game.getGame_name() + " updated successfully");
-//	return "redirect:/game/list";
-//    }
+    @RequestMapping(value = "/updateGame", method = RequestMethod.POST)
+    public String updateGame(@ModelAttribute("game") Game updatedGame, Model model) {
+	gameService.updateGame(updatedGame);
+	model.addAttribute("success", "Game " + updatedGame.getGame_name() + " updated successfully");
+	return "redirect:/game/list";
+    }
 
 }
