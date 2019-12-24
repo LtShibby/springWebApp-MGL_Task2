@@ -26,7 +26,6 @@ public class GameDaoImpl implements GameDao {
 
     @Override
     public void saveGame(Game game) {
-	System.out.println(game.toString());
 	getCurrentSession().save(game);
     }
 
@@ -38,14 +37,10 @@ public class GameDaoImpl implements GameDao {
 	Root<Game> rootGame = criteriaUpdate.from(Game.class);
 	criteriaUpdate.set("game_name", game.getGame_name());
 	criteriaUpdate.set("game_genre", game.getGame_genre());
+	criteriaUpdate.set("game_releaseDate", game.getGame_releaseDate());
 	criteriaUpdate.where(criteriaBuilder.equal(rootGame.get("game_id"), game.getGame_id()));
 
 	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();
-
-//	Game gameToUpdate = getGame(game.getGame_id());
-//	gameToUpdate.setGame_name(game.getGame_name());
-//	gameToUpdate.setGame_genre(game.getGame_genre());
-//	getCurrentSession().update(gameToUpdate);
     }
 
     @Override
@@ -64,11 +59,6 @@ public class GameDaoImpl implements GameDao {
 	    hqlQuery.setParameter("game_id", game_id);
 	    hqlQuery.executeUpdate();
 	}
-//
-//	Game game = getGame(id);
-//	if (game != null) {
-//	    getCurrentSession().delete(game);
-//	}
     }
 
     @Override

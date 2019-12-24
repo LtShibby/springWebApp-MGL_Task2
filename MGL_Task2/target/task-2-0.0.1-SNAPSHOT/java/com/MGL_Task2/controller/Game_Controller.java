@@ -57,7 +57,6 @@ public class Game_Controller {
 
     @RequestMapping(value = "/deleteGame", method = RequestMethod.GET)
     public String deleteGame(@RequestParam("game_id") long game_id) {
-	System.out.println("game_id to delete: " + game_id);
 	gameService.deleteGame(game_id);
 	return "redirect:/game/list";
     }

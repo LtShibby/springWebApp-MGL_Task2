@@ -5,9 +5,16 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller', ['MGL_Task2_S
   self.game = {
     game_id: '',
     game_name: '',
-    game_genre: ''
+    game_genre: '',
+    game_releaseDate: ''
   };
   self.games = [];
+  
+  
+  formatDate = function(date){
+      var dateOut = new Date(date);
+      return dateOut;
+};	
 
   self.fetchAllGames = function () {
     MGL_Task2_Service.fetchAllGames().then(function (data) {
@@ -22,4 +29,5 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller', ['MGL_Task2_S
   }
 
   self.fetchAllGames();
+
 }]);

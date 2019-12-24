@@ -35,17 +35,12 @@ public class HibernateConfiguration {
 
     @Bean
     public DataSource dataSource() {
-	System.out.println("inside dataSource");
 	DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
 	dataSource.setDriverClassName(env.getRequiredProperty(HibernateConfiguration.PROPERTY_NAME_DATABASE_DRIVER));
 	dataSource.setUrl(env.getRequiredProperty(HibernateConfiguration.PROPERTY_NAME_DATABASE_URL));
 	dataSource.setUsername(env.getRequiredProperty(HibernateConfiguration.PROPERTY_NAME_DATABASE_USERNAME));
 	dataSource.setPassword(env.getRequiredProperty(HibernateConfiguration.PROPERTY_NAME_DATABASE_PASSWORD));
-
-	System.out.println(dataSource.getUrl());
-	System.out.println(dataSource.getUsername());
-	System.out.println(dataSource.getPassword());
 
 	return dataSource;
     }

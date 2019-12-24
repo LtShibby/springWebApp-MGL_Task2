@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -51,6 +51,7 @@
 	            <tr>
 	              <th>Game Name</th>
 	              <th>Game Genre</th>
+	              <th>Release Date (yyyy/mm/dd)</th>
 	              <th>Action</th>
 	            </tr>
 	
@@ -70,6 +71,7 @@
 	              <tr>
 	                <td>${tempGame.game_name}</td>
 	                <td>${tempGame.game_genre}</td>
+	                <td>${tempGame.game_releaseDate}</td>
 	                <td>
 	                  <!-- display the update link --><a href="${updateLink}">Update</a> | <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this game?'))) return false">Delete</a>
 	                </td>

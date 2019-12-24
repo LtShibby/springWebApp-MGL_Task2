@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.MGL_Task2.manager.GameManager;
 import com.MGL_Task2.model.Game;
 import com.MGL_Task2.model.Review;
-import com.MGL_Task2.service.Game_Service;
 
 @Controller
 public class MGL_Task2_Controller {
 
     @Autowired
-    private Game_Service gameService;
+    private GameManager gameManager;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String landing() {
@@ -63,12 +63,28 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
-	return new ResponseEntity<>(gameService.listGames(), HttpStatus.OK);
+	return new ResponseEntity<>(gameManager.listGames(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createGame(@RequestBody Game game) {
-	gameService.saveGame(game);
+	System.out.println("Game being created: " + game.getGame_name());
+	System.out.println("Game being created: " + game.getGame_genre());
+	System.out.println("Game being created: " + game.getGame_releaseDate());
+	System.out.println("Game being created: " + game.getGame_id());
+	gameManager.saveGame(game);
 	return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/updateGame", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> updateGame(@RequestBody Game game) {
+	gameManager.updateGame(game);
+	return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> deleteGame(@RequestBody Game game) {
+	gameManager.deleteGame(game.getGame_id());
+	return new ResponseEntity<>(HttpStatus.OK);
     }
 }

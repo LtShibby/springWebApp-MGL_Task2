@@ -31,5 +31,19 @@ angular.module('MGL_Task2_app').factory('MGL_Task2_Service', ['$http', function(
 				}
 			);
 		}
+		
+		function gamePage() {
+			return $http.get(REST_SERVICE_URI + 'game/list').then(function(response) {
+					return response.data;
+				}
+			);
+		}
+		
+		function updateGame(game) {
+			return $http.post(REST_SERVICE_URI + 'createGame', game).then(function(response) {
+					return response.data;
+				}
+			);
+		}
 
 }]);

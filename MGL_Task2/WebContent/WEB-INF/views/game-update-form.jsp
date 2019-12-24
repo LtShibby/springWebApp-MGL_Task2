@@ -62,6 +62,10 @@ body {
 								<td><form:input path="game_genre" cssClass="form-control" /></td>
 							</tr>
 							<tr>
+								<td><label>Release Date (mm/dd/yyyy)</label></td>
+								<td><form:input path="game_releaseDate" cssClass="form-control" /></td>
+							</tr>
+							<tr>
 								<td><form:button class="btn btn-primary">Update Game</form:button>
 								</td>
 							</tr>
