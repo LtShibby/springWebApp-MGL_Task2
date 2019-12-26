@@ -99,7 +99,8 @@ body {
 
 					<div class="row">
 						<div class="form-actions floatRight">
-							<input type="submit" value="Add" class="btn btn-primary btn-sm">
+						<input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+							<!-- <input type="submit" value="Add" class="btn btn-primary btn-sm"> -->
 						</div>
 					</div>
 				</form>
@@ -132,7 +133,8 @@ body {
 								<span ng-bind="currentGame.game_releaseDate.values[0]"></span>
 							</td>
 							<td>
-								
+								<button type="button" ng-click="MGL_T2_ctrl.editGame(currentGame)" class="btn btn-success custom-width">Edit</button>  
+								<button type="button" ng-click="MGL_T2_ctrl.deleteGame(currentGame.game_id)" class="btn btn-danger custom-width">Remove</button>
 							</td>
 						</tr>
 					</tbody>

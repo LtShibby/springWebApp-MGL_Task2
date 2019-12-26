@@ -82,9 +82,22 @@ public class MGL_Task2_Controller {
 	return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> deleteGame(@RequestBody Game game) {
-	gameManager.deleteGame(game.getGame_id());
+//    @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Void> deleteGame(@RequestBody Game game) {
+//	System.out.println("game to delete: " + game.getGame_name());
+//	System.out.println("game to delete: " + game.getGame_id());
+//	System.out.println("game to delete: " + game.getGame_genre());
+//	gameManager.deleteGame(game.getGame_id());
+//	return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+    @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT)
+    public ResponseEntity<Void> deleteGame(@RequestBody String game_id) {
+//	System.out.println("game to delete: " + game.getGame_name());
+//	System.out.println("game to delete: " + game.getGame_id());
+//	System.out.println("game to delete: " + game.getGame_genre());
+	System.out.println("game_id = " + game_id);
+	gameManager.deleteGame((Long.valueOf(game_id)));
 	return new ResponseEntity<>(HttpStatus.OK);
     }
 }

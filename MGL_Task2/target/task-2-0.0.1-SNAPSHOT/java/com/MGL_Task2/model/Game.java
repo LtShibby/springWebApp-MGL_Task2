@@ -57,6 +57,12 @@ public class Game {
 	return game_releaseDate;
     }
 
+    public void setGame_releaseDate(String game_releaseDate_string) {
+	System.out.println("release dateeeee: " + game_releaseDate_string);
+	LocalDate parsed_game_releaseDate = LocalDate.parse(game_releaseDate_string);
+	game_releaseDate = parsed_game_releaseDate;
+    }
+
     public void setGame_releaseDate(LocalDate game_releaseDate) {
 	this.game_releaseDate = game_releaseDate;
     }
