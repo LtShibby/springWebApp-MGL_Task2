@@ -9,6 +9,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "GAME")
@@ -53,14 +55,16 @@ public class Game {
 	this.game_genre = game_genre;
     }
 
-    public LocalDate getGame_releaseDate() {
-	return game_releaseDate;
+    public String getGame_releaseDate() {
+	return game_releaseDate.toString();
     }
 
     public void setGame_releaseDate(String game_releaseDate_string) {
-	System.out.println("release dateeeee: " + game_releaseDate_string);
-	LocalDate parsed_game_releaseDate = LocalDate.parse(game_releaseDate_string);
-	game_releaseDate = parsed_game_releaseDate;
+	String datePattern = "yyyy-MM-dd";
+	DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(datePattern);
+	LocalDate game_releaseDate_LocalDate = LocalDate.parse(game_releaseDate_string, dateTimeFormatter);
+
+	game_releaseDate = game_releaseDate_LocalDate;
     }
 
     public void setGame_releaseDate(LocalDate game_releaseDate) {

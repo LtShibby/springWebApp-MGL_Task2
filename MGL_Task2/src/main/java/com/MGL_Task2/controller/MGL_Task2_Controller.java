@@ -23,19 +23,9 @@ public class MGL_Task2_Controller {
     @Autowired
     private GameManager gameManager;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = { "/", "/index", "/home" }, method = RequestMethod.GET)
     public String landing() {
 	return "index";
-    }
-
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index() {
-	return "index";
-    }
-
-    @RequestMapping(value = "/home")
-    public ModelAndView home() {
-	return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
@@ -52,8 +42,13 @@ public class MGL_Task2_Controller {
     }
 
     @RequestMapping(value = "/games", method = RequestMethod.GET)
-    public ModelAndView game() {
+    public ModelAndView games() {
 	return new ModelAndView("games", "command", new Game());
+    }
+
+    @RequestMapping(value = "/reviews", method = RequestMethod.GET)
+    public ModelAndView reviews() {
+	return new ModelAndView("reviews", "command", new Review());
     }
 
     @RequestMapping(value = "/gameList", method = RequestMethod.GET)
@@ -61,17 +56,13 @@ public class MGL_Task2_Controller {
 	return "gameList";
     }
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/fetchAllGames", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
 	return new ResponseEntity<>(gameManager.listGames(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createGame(@RequestBody Game game) {
-	System.out.println("Game being created: " + game.getGame_name());
-	System.out.println("Game being created: " + game.getGame_genre());
-	System.out.println("Game being created: " + game.getGame_releaseDate());
-	System.out.println("Game being created: " + game.getGame_id());
 	gameManager.saveGame(game);
 	return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -82,20 +73,8 @@ public class MGL_Task2_Controller {
 	return new ResponseEntity<>(HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Void> deleteGame(@RequestBody Game game) {
-//	System.out.println("game to delete: " + game.getGame_name());
-//	System.out.println("game to delete: " + game.getGame_id());
-//	System.out.println("game to delete: " + game.getGame_genre());
-//	gameManager.deleteGame(game.getGame_id());
-//	return new ResponseEntity<>(HttpStatus.OK);
-//    }
-
     @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT)
     public ResponseEntity<Void> deleteGame(@RequestBody String game_id) {
-//	System.out.println("game to delete: " + game.getGame_name());
-//	System.out.println("game to delete: " + game.getGame_id());
-//	System.out.println("game to delete: " + game.getGame_genre());
 	System.out.println("game_id = " + game_id);
 	gameManager.deleteGame((Long.valueOf(game_id)));
 	return new ResponseEntity<>(HttpStatus.OK);

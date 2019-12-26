@@ -9,6 +9,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +38,7 @@ public class GameDaoImpl implements GameDao {
 	Root<Game> rootGame = criteriaUpdate.from(Game.class);
 	criteriaUpdate.set("game_name", game.getGame_name());
 	criteriaUpdate.set("game_genre", game.getGame_genre());
-	criteriaUpdate.set("game_releaseDate", game.getGame_releaseDate());
+	criteriaUpdate.set("game_releaseDate", new LocalDate(game.getGame_releaseDate()));
 	criteriaUpdate.where(criteriaBuilder.equal(rootGame.get("game_id"), game.getGame_id()));
 
 	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();

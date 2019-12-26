@@ -17,12 +17,6 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 				});
 			}
 
-//			self.addGame = function() {
-//				return MGL_Task2_Service.createGame(self.game).then(function() {
-//					self.fetchAllGames();
-//				});
-//			}
-
 			self.addGame = function() {
 				if(self.game.game_id===null){
 					return MGL_Task2_Service.createGame(self.game).then(function() {
