@@ -35,8 +35,8 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/addReview", method = RequestMethod.POST)
     public ModelAndView addReview(Review review, ModelMap model) {
-	if (review.getAuthor().equals("")) {
-	    review.setAuthor("anonymous");
+	if (review.getReview_author().equals("")) {
+	    review.setReview_author("anonymous");
 	}
 	return new ModelAndView("result", "submittedReview", review);
     }
@@ -58,6 +58,11 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/fetchAllGames", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
+	return new ResponseEntity<>(gameManager.listGames(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fetchReviewsForGame", method = RequestMethod.GET)
+    public ResponseEntity<List<Game>> fetchReviewsForGame() {
 	return new ResponseEntity<>(gameManager.listGames(), HttpStatus.OK);
     }
 

@@ -1,31 +1,60 @@
 package com.MGL_Task2.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "REVIEW")
 public class Review {
-	private String reviewBody;
-	private String author;
-	private Integer rating;
 
-	public String getAuthor() {
-		return author;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "review_id", nullable = false)
+    private Long review_id;
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    @Column(name = "review_body", nullable = false)
+    private String review_body;
 
-	public Integer getRating() {
-		return rating;
-	}
+    @Column(name = "review_author")
+    private String review_author;
 
-	public void setRating(Integer rating) {
-		this.rating = rating;
-	}
+    @Column(name = "review_rating")
+    private Integer review_rating;
 
-	public String getReviewBody() {
-		return reviewBody;
-	}
+    public Long getReview_id() {
+	return review_id;
+    }
 
-	public void setReviewBody(String reviewBody) {
-		this.reviewBody = reviewBody;
-	}
+    public void setReview_id(Long review_id) {
+	this.review_id = review_id;
+    }
+
+    public String getReview_body() {
+	return review_body;
+    }
+
+    public void setReview_body(String review_body) {
+	this.review_body = review_body;
+    }
+
+    public String getReview_author() {
+	return review_author;
+    }
+
+    public void setReview_author(String review_author) {
+	this.review_author = review_author;
+    }
+
+    public Integer getReview_rating() {
+	return review_rating;
+    }
+
+    public void setReview_rating(Integer review_rating) {
+	this.review_rating = review_rating;
+    }
+
 }

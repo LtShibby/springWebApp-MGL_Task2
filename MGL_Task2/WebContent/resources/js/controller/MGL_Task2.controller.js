@@ -43,7 +43,7 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 			}
 
 			self.editGame = function(game) {
-				self.game = game;
+				self.game = angular.copy(game);
 			}
 
 			self.deleteGame = function(game_id) {

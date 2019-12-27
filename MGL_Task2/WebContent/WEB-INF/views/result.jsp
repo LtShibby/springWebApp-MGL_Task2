@@ -44,19 +44,19 @@
 	    <tr>
 	      <td>ReviewBody</td>
 	      <td>
-	        <p>${submittedReview.reviewBody}</p>
+	        <p>${submittedReview.review_body}</p>
 	      </td>
 	    </tr>
 	    <tr>
 	      <td>Author</td>
 	      <td>
-	        <p>${submittedReview.author}</p>
+	        <p>${submittedReview.review_author}</p>
 	      </td>
 	    </tr>
 	    <tr>
 	      <td>Rating</td>
 	      <td>
-	        <p>${submittedReview.rating}</p>
+	        <p>${submittedReview.review_rating}</p>
 	      </td>
 	    </tr>
 	  </table>

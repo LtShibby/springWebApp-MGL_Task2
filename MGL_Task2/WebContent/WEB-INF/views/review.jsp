@@ -48,7 +48,7 @@
 	            <label>Review Body*</label>
 	          </td>
 	          <td>
-	            <textarea name="reviewBody" class="form-control" placeholder="What did you like/dislike about the game? [required]" required></textarea>
+	            <textarea name="review_body" class="form-control" placeholder="What did you like/dislike about the game? [required]" required></textarea>
 	          </td>
 	        </tr>
 	        <tr>
@@ -56,7 +56,7 @@
 	            <label>Author</label>
 	          </td>
 	          <td>
-	            <input type="text" name="author" class="form-control" placeholder="Your name (leave black to leave an anonymous review)"></input>
+	            <input type="text" name="review_author" class="form-control" placeholder="Your name (leave black to leave an anonymous review)"></input>
 	          </td>
 	        </tr>
 	        <tr>
@@ -64,7 +64,7 @@
 	            <label>Rating</label>
 	          </td>
 	          <td>
-	            <select id="ratingSelection" name="rating" class="chzn-select" style="width: 100px" required>
+	            <select id="ratingSelection" name="review_rating" class="chzn-select" style="width: 100px" required>
 	              <option value=1>1</option>
 	              <option value=2>2</option>
 	              <option value=3>3</option>
