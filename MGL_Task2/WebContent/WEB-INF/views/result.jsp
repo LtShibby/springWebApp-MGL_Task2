@@ -24,7 +24,7 @@
 	  </style>
 	</head>
 	
-	<body>
+	<body ng-app="MGL_Task2_app" class="ng-cloak">>
 	  <nav id="MistLibrary-navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
 	    <a class="navbar-brand" href="index"> <img src="resources/images/MGLlogo.png" width="90" height="60" alt="">
 	    </a>
@@ -34,8 +34,9 @@
 	    <br>
 	  </nav>
 	  <br/>
-	  <div class="container">
-	    <div class="panel-heading text-light">
+	  <div class="container"ng-controller="MGL_Task2_Controller as MGL_T2_ctrl">
+	   	Hide HTML: <input type="checkbox" ng-model="myVar">
+	    <div class="panel-heading text-light" ng-hide="myVar">
 	      <h2>Review Submitted</h2>
 	      <div class="panel panel-info">
 	        <div class="panel-body">

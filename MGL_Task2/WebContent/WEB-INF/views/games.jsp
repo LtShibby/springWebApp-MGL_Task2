@@ -43,7 +43,9 @@ body {
 	</nav>
 	<br>
 	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl">
-			<div class="panel panel-default">
+			
+			Hide HTML: <input type="checkbox" ng-model="myVar">
+			<div class="panel panel-default" ng-hide="myVar">
 			<div class="panel-heading text-light">
 				<span class="lead">Game Registration Form </span>
 			</div>

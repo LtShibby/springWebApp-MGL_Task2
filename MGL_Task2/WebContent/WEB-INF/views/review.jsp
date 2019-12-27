@@ -35,7 +35,8 @@
 	    <br>
 	  </nav>
 	  <br>
-	  <div class="container">
+	  Hide HTML: <input type="checkbox" ng-model="myVar">
+	  <div class="container" ng-hide="myVar">
 	    <div class="panel-heading text-light">
 	      <h2>Update Game Form</h2>
 	      <div class="panel panel-info">
