@@ -8,7 +8,8 @@ angular.module('MGL_Task2_app').factory('MGL_Task2_Service', ['$http', function(
 			fetchAllGames : fetchAllGames,
 			createGame : createGame,
 			updateGame : updateGame,
-			deleteGame : deleteGame
+			deleteGame : deleteGame,
+			fetchAllReviews: fetchAllReviews
 		};
 
 		return factory;
@@ -55,4 +56,13 @@ angular.module('MGL_Task2_app').factory('MGL_Task2_Service', ['$http', function(
 	        );
 	    }
 
+		
+	    function fetchAllReviews(review_game_id) {
+	    	console.log(review_game_id + " in service");
+	    	$http.get(REST_SERVICE_URI + 'review?review_game_id='+review_game_id).then(function (response) {
+	    		console.log("response.data in jsservice: " + response.data);
+	                return response.data;
+	            }
+	        );
+	    }
 }]);

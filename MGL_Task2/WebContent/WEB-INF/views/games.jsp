@@ -43,84 +43,77 @@ body {
 	</nav>
 	<br>
 	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl">
-			
-			Hide HTML: <input type="checkbox" ng-model="myVar">
-			<div class="panel panel-default" ng-hide="myVar">
+
+		Hide HTML: <input type="checkbox" ng-model="myVar">
+		<div class="panel panel-default" ng-hide="myVar">
 			<div class="panel-heading text-light">
 				<span class="lead">Game Registration Form </span>
 			</div>
 			<div class="formcontainer">
-			<div class="tablecontainer">
-				<form ng-submit="MGL_T2_ctrl.addGame()" name="gameForm" class="form-horizontal">
-				<table class="table table-dark table-striped text-light">
-					<tr>
-						<td>
-						<input type="hidden" ng-model="MGL_T2_ctrl.game.game_id" />
-							<label class="col-md-2 control-lable text-light" for="game_name">Name*</label>
-							<div class="col-md-9">
-								<input type="text" ng-model="MGL_T2_ctrl.game.game_name" id="game_name" class="game_name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
-								<div class="has-error" ng-show="gameForm.$dirty">
-									<span ng-show="gameForm.game_name.$error.required">This is a required field</span>
-									<span ng-show="gameForm.game_name.$error.minlength">Minimum length required is 3</span>
-									<span ng-show="gameForm.game_name.$invalid">This field is invalid </span>
-								</div>
-							</div>
-						</td>
-					</tr>
+				<div class="tablecontainer">
+					<form ng-submit="MGL_T2_ctrl.addGame()" name="gameForm" class="form-horizontal">
+						<table class="table table-dark table-striped text-light">
+							<tr>
+								<td>
+									<input type="hidden" ng-model="MGL_T2_ctrl.game.game_id" /> <label class="col-md-2 control-lable text-light" for="game_name">Name*</label>
+									<div class="col-md-9">
+										<input type="text" ng-model="MGL_T2_ctrl.game.game_name" id="game_name" class="game_name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
+										<div class="has-error" ng-show="gameForm.$dirty">
+											<span ng-show="gameForm.game_name.$error.required">This is a required field</span>
+											<span ng-show="gameForm.game_name.$error.minlength">Minimum length required is 3</span>
+											<span ng-show="gameForm.game_name.$invalid">This field is invalid </span>
+										</div>
+									</div>
+								</td>
+							</tr>
 
 
-					<tr>
-						<td>
-							<label class="col-md-2 control-lable text-light" for="game_genre">Game Genre</label>
-							<div class="col-md-9">
-								<input type="text" ng-model="MGL_T2_ctrl.game.game_genre" id="game_genre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<label class="col-md-2 control-lable text-light" for="game_releaseDate">Game Release Date (yyyy-MM-dd)</label>
-							<div class="col-md-9">
-								<input type="text" ng-model="MGL_T2_ctrl.game.game_releaseDate" id="game_releaseDate" class="form-control input-sm" placeholder="Enter relase date of the new game  (yyyy-MM-dd)" />
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<td class="form-actions">
-							<input type="submit" value="{{!MGL_T2_ctrl.game.game_id ? 'Add' : 'Update'}}" class="btn btn-outline-light btn-sm" ng-disabled="myForm.$invalid">
-						</td>
-					</tr>
-					</table>
-				</form>
+							<tr>
+								<td>
+									<label class="col-md-2 control-lable text-light" for="game_genre">Game Genre</label>
+									<div class="col-md-9">
+										<input type="text" ng-model="MGL_T2_ctrl.game.game_genre" id="game_genre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label class="col-md-2 control-lable text-light" for="game_releaseDate">Game Release Date (yyyy-MM-dd)</label>
+									<div class="col-md-9">
+										<input type="text" ng-model="MGL_T2_ctrl.game.game_releaseDate" id="game_releaseDate" class="form-control input-sm" placeholder="Enter relase date of the new game  (yyyy-MM-dd)" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="form-actions">
+									<input type="submit" value="{{!MGL_T2_ctrl.game.game_id ? 'Add' : 'Update'}}" class="btn btn-outline-light btn-sm" ng-disabled="myForm.$invalid">
+								</td>
+							</tr>
+						</table>
+					</form>
 				</div>
-		</div>
-		<div class="panel panel-default">
-			
-			
-							</div>
+			</div>
+			<div class="panel panel-default"></div>
 		</div>
 		<div class="panel panel-default">
 			<div class="tablecontainer">
 				<table class="table table-dark table-striped text-light">
 					<thead>
 						<tr>
-							<td>
-								List of all games
-							</td>
+							<td>List of all games</td>
 						</tr>
 						<tr>
-							<th>Game Id</th>
+							<th ng-hide="true">Game ID</th>
 							<th>Game Name</th>
 							<th>Game Genre</th>
 							<th>Release Date</th>
+							<th>Reviews</th>
 							<th width="20%">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="currentGame in MGL_T2_ctrl.games">
-							<td>
+							<td ng-hide="true">
 								<span ng-bind="currentGame.game_id"></span>
 							</td>
 							<td>
@@ -131,6 +124,9 @@ body {
 							</td>
 							<td>
 								<span ng-bind="currentGame.game_releaseDate"></span>
+							</td>
+							<td>
+								<span ng-bind="currentGame.game_id"></span><button type="button" ng-click="MGL_T2_ctrl.fetchAllReviews(currentGame.game_id)"class="btn btn-outline-light custom-width">Reviews</button>
 							</td>
 							<td>
 								<button type="button" ng-click="MGL_T2_ctrl.editGame(currentGame)" class="btn btn-outline-light custom-width">Edit</button>

@@ -12,8 +12,10 @@ public interface ReviewDao {
 
     Review getReview(Long id);
 
+    List<Review> getReviews(Long review_game_id);
+
     void deleteReview(Long id);
 
-    List<Review> listReviews();
+    List<Review> listReviews(Long review_game_id);
 
 }

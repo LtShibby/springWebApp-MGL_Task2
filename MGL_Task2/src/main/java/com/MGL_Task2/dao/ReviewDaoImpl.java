@@ -44,10 +44,21 @@ public class ReviewDaoImpl implements ReviewDao {
 	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Review getReview(Long long1) {
-	Review review = getCurrentSession().get(Review.class, long1);
-	return review;
+    public List<Review> getReviews(Long review_game_id) {
+
+	System.out.println("review_game_id in DAO: " + review_game_id);
+	List<Review> reviews = getCurrentSession().createQuery("from Review").list();
+	System.out.println("reviews in DAO: " + reviews.toString());
+	for (Review review : reviews) {
+	    System.out.println("review data = " + review.toString());
+	}
+	return reviews;
+	// System.out.println("review_game_id in DAO: " + review_game_id);
+//	List<Review> reviews = (List<Review>) getCurrentSession().get(Review.class, review_game_id);
+//	System.out.println("reviews in DAO: " + reviews);
+//	return reviews;
     }
 
     @Override
@@ -64,7 +75,22 @@ public class ReviewDaoImpl implements ReviewDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Review> listReviews() {
+    public List<Review> listReviews(Long review_game_id) {
+
+	List<Review> reviews = getReviews(review_game_id);
+
+	if (reviews != null) {
+	    Query hqlQuery = getCurrentSession().createQuery("delete Game where game_id = :game_id");
+	    hqlQuery.setParameter("game_id", review_game_id);
+	    hqlQuery.executeUpdate();
+	}
+
 	return getCurrentSession().createQuery("from Review").list();
+    }
+
+    @Override
+    public Review getReview(Long review_id) {
+	Review review = getCurrentSession().get(Review.class, review_id);
+	return review;
     }
 }

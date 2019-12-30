@@ -33,13 +33,18 @@ public class Review_Service_Impl implements Review_Service {
     }
 
     @Override
+    public List<Review> getReviews(Long review_game_id) {
+	return reviewDao.getReviews(review_game_id);
+    }
+
+    @Override
     public void deleteReview(Long id) {
 	reviewDao.deleteReview(id);
     }
 
     @Override
-    public List<Review> listReviews() {
-	return reviewDao.listReviews();
+    public List<Review> listReviews(Long game_id) {
+	return reviewDao.listReviews(game_id);
     }
 
 }

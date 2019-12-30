@@ -25,6 +25,17 @@ public class Review {
     @Column(name = "review_rating")
     private Integer review_rating;
 
+    @Column(name = "review_game_id")
+    private Integer review_game_id;
+
+    public Integer getReview_game_id() {
+	return review_game_id;
+    }
+
+    public void setReview_game_id(Integer review_game_id) {
+	this.review_game_id = review_game_id;
+    }
+
     public Long getReview_id() {
 	return review_id;
     }
@@ -55,6 +66,12 @@ public class Review {
 
     public void setReview_rating(Integer review_rating) {
 	this.review_rating = review_rating;
+    }
+
+    @Override
+    public String toString() {
+	return "Review [review_id=" + review_id + ", review_body=" + review_body + ", review_author=" + review_author
+		+ ", review_rating=" + review_rating + ", review_game_id=" + review_game_id + "]";
     }
 
 }

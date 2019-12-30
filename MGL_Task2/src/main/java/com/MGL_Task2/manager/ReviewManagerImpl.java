@@ -28,8 +28,13 @@ public class ReviewManagerImpl implements ReviewManager {
     }
 
     @Override
-    public Review getReview(Long id) {
-	return reviewService.getReview(id);
+    public Review getReview(Long review_id) {
+	return reviewService.getReview(review_id);
+    }
+
+    @Override
+    public List<Review> getReviews(Long review_game_id) {
+	return reviewService.getReviews(review_game_id);
     }
 
     @Override
@@ -38,8 +43,8 @@ public class ReviewManagerImpl implements ReviewManager {
     }
 
     @Override
-    public List<Review> listReviews() {
-	return reviewService.listReviews();
+    public List<Review> listReviews(Long review_game_id) {
+	return reviewService.listReviews(review_game_id);
     }
 
 }

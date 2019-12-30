@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
-		[ 'MGL_Task2_Service', function(MGL_Task2_Service) {
+		[ 'MGL_Task2_Service',  '$window', function(MGL_Task2_Service, $window) {
 			var self = this;
 			self.game = {
 				game_id : null,
@@ -10,6 +10,7 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 				game_releaseDate : null
 			};
 			self.games = [];
+			self.reviews = [];
 
 			self.fetchAllGames = function() {
 				MGL_Task2_Service.fetchAllGames().then(function(data) {
@@ -51,6 +52,13 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 					self.fetchAllGames();
 				});
 				self.fetchAllGames();
+			}
+			
+			self.fetchAllReviews = function(game_id) {
+				console.log("in jscontroller: " + game_id)
+				self.reviews = MGL_Task2_Service.fetchAllReviews(game_id);
+				console.log("reviews in jscontroller: " + self.reviews);
+				$window.location.href = "review?review_game_id="+game_id;
 			}
 
 			self.fetchAllGames();

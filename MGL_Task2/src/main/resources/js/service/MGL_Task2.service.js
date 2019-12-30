@@ -11,13 +11,21 @@ angular.module('MGL_Task2_app').factory(
 					var factory = {
 						fetchAllGames : fetchAllGames,
 						createGame : createGame,
-						updateGame : updateGame
+						updateGame : updateGame,
+						fetchAllReviews : fetchAllReviews
 					};
 
 					return factory;
 
 					function fetchAllGames() {
 						return $http.get(REST_SERVICE_URI + 'game/list').then(
+								function(response) {
+									return response.data;
+								});
+					}
+					
+					function fetchReviewsForGame(game_id) {
+						return $http.get(REST_SERVICE_URI + 'fetchReviewsForGame').then(
 								function(response) {
 									return response.data;
 								});

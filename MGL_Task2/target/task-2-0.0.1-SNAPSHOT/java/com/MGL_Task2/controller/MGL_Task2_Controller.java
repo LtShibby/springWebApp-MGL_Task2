@@ -11,9 +11,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MGL_Task2.manager.GameManager;
+import com.MGL_Task2.manager.ReviewManager;
 import com.MGL_Task2.model.Game;
 import com.MGL_Task2.model.Review;
 
@@ -23,20 +25,29 @@ public class MGL_Task2_Controller {
     @Autowired
     private GameManager gameManager;
 
+    @Autowired
+    private ReviewManager reviewManager;
+
     @RequestMapping(value = { "/", "/index", "/home" }, method = RequestMethod.GET)
     public String landing() {
 	return "index";
     }
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
-    public ModelAndView review() {
-	return new ModelAndView("review", "command", new Review());
+    public ModelAndView review(@RequestParam String review_game_id) {
+	System.out.println("review_game_id: " + review_game_id);
+	ModelAndView reviewModelAndView = new ModelAndView("review", "command", new Review());
+	List<Review> reviewsForGame = reviewManager.getReviews(Long.valueOf(review_game_id));
+
+	reviewModelAndView.addObject("reviewsForGame", reviewsForGame);
+
+	return reviewModelAndView;
     }
 
     @RequestMapping(value = "/addReview", method = RequestMethod.POST)
     public ModelAndView addReview(Review review, ModelMap model) {
-	if (review.getAuthor().equals("")) {
-	    review.setAuthor("anonymous");
+	if (review.getReview_author().equals("")) {
+	    review.setReview_author("anonymous");
 	}
 	return new ModelAndView("result", "submittedReview", review);
     }
@@ -59,6 +70,13 @@ public class MGL_Task2_Controller {
     @RequestMapping(value = "/fetchAllGames", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
 	return new ResponseEntity<>(gameManager.listGames(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fetchReviewsForGame", method = RequestMethod.PUT)
+    public ResponseEntity<List<Review>> fetchReviewsForGame(@RequestBody String review_game_id) {
+	System.out.println("inside java controller review_game_id = " + review_game_id);
+
+	return new ResponseEntity<>(reviewManager.listReviews(Long.valueOf(review_game_id)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
