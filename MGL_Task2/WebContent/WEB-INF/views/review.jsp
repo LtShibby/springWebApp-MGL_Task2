@@ -51,7 +51,7 @@ body {
 			</div>
 			<div class="formcontainer">
 				<div class="tablecontainer">
-					<form name="submitReviewForm" method="POST" action="addReview">
+					<form:form name="submitReviewForm" method="post" action='{{MGL_T2_ctrl.this_review_game_id}}'>
 						<table class="table table-dark text-light">
 							<tr>
 								<td>
@@ -89,7 +89,7 @@ body {
 								</td>
 							</tr>
 						</table>
-					</form>
+					</form:form>
 				</div>
 			</div>
 			<div class="panel panel-default"></div>
@@ -98,29 +98,37 @@ body {
 			<div class="tablecontainer">
 				<table class="table table-dark table-striped text-light">
 					<thead>
-						<tr>
-							<td>List of all reviews</td>
-						</tr>
-						<tr>
-							<th data-ng-hide="true">Game ID</th>
-							<th>Review</th>
-							<th>Author</th>
-							<th>Rating</th>
-							<th>Review Game Id</th>
-							<th width="20%">Actions</th>
-						</tr>
+						<c:set var="numberOfReviews" scope="session" value="${reviewsForGame.size()}" />
+						<c:if test="${numberOfReviews < 1}">
+							<tr>
+								<td>There are currently no reviews for this game.</td>
+							</tr>
+						</c:if>
+						<c:if test="${numberOfReviews > 0}">
+							<tr>
+								<td>List of all reviews</td>
+							</tr>
+							<tr>
+								<th data-ng-hide="true">Game ID</th>
+								<th>Review</th>
+								<th>Author</th>
+								<th>Rating</th>
+								<th>Review Game Id</th>
+								<th width="20%">Actions</th>
+							</tr>
+						</c:if>
 					</thead>
+
 					<tbody>
 						<c:forEach var="tempReview" items="${reviewsForGame}">
-
 							<!-- construct an "update" link with game id -->
-							<c:url var="updateLink" value="/game/updateForm">
-								<c:param name="review_game_id" value="${tempReview.review_id}" />
+							<c:url var="updateLink" value="/review/updateForm">
+								<c:param name="review_id" value="${tempReview.review_id}" />
 							</c:url>
 
 							<!-- construct an "delete" link with game id -->
-							<c:url var="deleteLink" value="/game/deleteReview">
-								<c:param name="review_game_id" value="${tempReview.review_id}" />
+							<c:url var="deleteLink" value="/review/deleteReview">
+								<c:param name="review_id" value="${tempReview.review_id}" />
 							</c:url>
 
 							<tr>

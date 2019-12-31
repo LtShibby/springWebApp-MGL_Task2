@@ -68,4 +68,10 @@ public class Review {
 	this.review_rating = review_rating;
     }
 
+    @Override
+    public String toString() {
+	return "Review [review_id=" + review_id + ", review_body=" + review_body + ", review_author=" + review_author
+		+ ", review_rating=" + review_rating + ", review_game_id=" + review_game_id + "]";
+    }
+
 }

@@ -11,6 +11,7 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 			};
 			self.games = [];
 			self.reviews = [];
+			self.this_review_game_id = null;
 
 			self.fetchAllGames = function() {
 				MGL_Task2_Service.fetchAllGames().then(function(data) {
@@ -54,13 +55,16 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 				self.fetchAllGames();
 			}
 			
+			self.addGameIdToNewReview = function() {
+				self.this_review_game_id="review/saveReview?review_game_id="+new URLSearchParams(location.search).get("review_game_id");
+			}
+			
 			self.fetchAllReviews = function(game_id) {
-				console.log("in jscontroller: " + game_id)
 				self.reviews = MGL_Task2_Service.fetchAllReviews(game_id);
-				console.log("reviews in jscontroller: " + self.reviews);
 				$window.location.href = "review?review_game_id="+game_id;
 			}
 
 			self.fetchAllGames();
+			self.addGameIdToNewReview();
 
 		} ]);

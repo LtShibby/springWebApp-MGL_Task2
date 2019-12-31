@@ -7,9 +7,9 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-	  <script src="resources/js/app.js" /></script>
-	  <script src="resources/js/service/MGL_Task2.service.js"></script>
-	  <script src="resources/js/controller/MGL_Task2.controller.js"></script>
+	  <script src="../resources/js/app.js" /></script>
+	  <script src="../resources/js/service/MGL_Task2.service.js"></script>
+	  <script src="../resources/js/controller/MGL_Task2.controller.js"></script>
 	  <!-- Bootstrap CSS -->
 	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	
@@ -29,8 +29,6 @@
 	    <a class="navbar-brand" href="index"> <img src="resources/images/MGLlogo.png" width="90" height="60" alt="">
 	    </a>
 	    <a class="nav-item nav-link" href="games">Games</a>
-	    <a class="nav-item nav-link" href="review">Review</a>
-	    <a class="nav-item nav-link" href="game/list">Game List</a>
 	    <br>
 	  </nav>
 	  <br/>
@@ -59,6 +57,10 @@
 	      <td>
 	        <p>${submittedReview.review_rating}</p>
 	      </td>
+	    </tr>
+	    <tr>
+	    <td><a class="nav-item nav-link" href="../review?review_game_id=${submittedReview.review_game_id}">Return to reviews</a></td>
+	    <td></td>
 	    </tr>
 	  </table>
 	  </div>

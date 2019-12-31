@@ -37,8 +37,6 @@ body {
 			<img src="resources/images/MGLlogo.png" width="90" height="60" alt="">
 		</a>
 		<a class="nav-item nav-link" href="games">Games</a>
-		<a class="nav-item nav-link" href="review">Review</a>
-		<a class="nav-item nav-link" href="game/list">Game List</a>
 		<br>
 	</nav>
 	<br>

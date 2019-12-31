@@ -10,6 +10,7 @@ C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\M
 C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\dao\GameDaoImpl.java
 C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\configuration\HibernateConfiguration.java
 C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\service\Game_Service.java
+C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\controller\Review_Controller.java
 C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\manager\ReviewManagerImpl.java
 C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\service\Review_Service.java
 C:\Users\matthew.wozniak\Documents\Dante\mistTask2\MGL_Task2\src\main\java\com\MGL_Task2\dao\ReviewDao.java

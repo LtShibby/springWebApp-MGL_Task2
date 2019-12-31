@@ -9,7 +9,6 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,7 +37,8 @@ public class ReviewDaoImpl implements ReviewDao {
 	Root<Review> rootReview = criteriaUpdate.from(Review.class);
 	criteriaUpdate.set("review_body", review.getReview_body());
 	criteriaUpdate.set("review_author", review.getReview_author());
-	criteriaUpdate.set("review_releaseDate", new LocalDate(review.getReview_rating()));
+	criteriaUpdate.set("review_rating", review.getReview_rating());
+	criteriaUpdate.set("review_game_id", review.getReview_game_id());
 	criteriaUpdate.where(criteriaBuilder.equal(rootReview.get("review_id"), review.getReview_id()));
 
 	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();
@@ -49,13 +49,13 @@ public class ReviewDaoImpl implements ReviewDao {
     public List<Review> getReviews(Long review_game_id) {
 
 	System.out.println("review_game_id in DAO: " + review_game_id);
-	List<Review> reviews = getCurrentSession().createQuery("from Review").list();
+	List<Review> reviews = getCurrentSession().createQuery("from Review where review_game_id = " + review_game_id)
+		.list();
 	System.out.println("reviews in DAO: " + reviews.toString());
+	for (Review review : reviews) {
+	    System.out.println("review data = " + review.toString());
+	}
 	return reviews;
-	// System.out.println("review_game_id in DAO: " + review_game_id);
-//	List<Review> reviews = (List<Review>) getCurrentSession().get(Review.class, review_game_id);
-//	System.out.println("reviews in DAO: " + reviews);
-//	return reviews;
     }
 
     @Override

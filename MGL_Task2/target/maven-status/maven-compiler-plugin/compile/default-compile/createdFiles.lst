@@ -4,6 +4,7 @@ com\MGL_Task2\service\Game_Service_Impl.class
 com\MGL_Task2\model\Review.class
 com\MGL_Task2\configuration\WebAppConfig.class
 com\MGL_Task2\dao\ReviewDao.class
+com\MGL_Task2\controller\Review_Controller.class
 com\MGL_Task2\dao\GameDaoImpl.class
 com\MGL_Task2\dao\ReviewDaoImpl.class
 com\MGL_Task2\service\Review_Service.class
