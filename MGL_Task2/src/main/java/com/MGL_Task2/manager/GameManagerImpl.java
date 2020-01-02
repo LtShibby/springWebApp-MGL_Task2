@@ -2,8 +2,6 @@ package com.MGL_Task2.manager;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +9,6 @@ import com.MGL_Task2.model.Game;
 import com.MGL_Task2.service.Game_Service;
 
 @Service
-@Transactional
 public class GameManagerImpl implements GameManager {
 
     @Autowired

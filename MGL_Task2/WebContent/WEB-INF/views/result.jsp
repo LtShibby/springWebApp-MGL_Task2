@@ -9,6 +9,10 @@
 	<script src="../resources/js/app.js"></script>
 	<script src="../resources/js/service/MGL_Task2.service.js"></script>
 	<script src="../resources/js/controller/MGL_Task2.controller.js"></script>
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="<c:url value='../resources/images/apple-touch-icon.png' />">
+	<link rel="icon" type="image/png" sizes="32x32" href="<c:url value='../resources/images/favicon-32x32.png' />">
+	<link rel="icon" type="image/png" sizes="16x16" href="<c:url value='../resources/images/favicon-16x16.png' />">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,8 +34,8 @@
 		<br>
 	</nav>
 	<br />
-	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl"> Hide HTML: <input type="checkbox" ng-model="myVar">
-		<div class="panel-heading text-light" ng-hide="myVar">
+	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl">
+		<div class="panel-heading text-light">
 			<h2>Review Submitted</h2>
 			<div class="panel panel-info">
 				<div class="panel-body">

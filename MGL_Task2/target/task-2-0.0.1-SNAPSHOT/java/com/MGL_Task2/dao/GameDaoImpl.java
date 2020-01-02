@@ -13,13 +13,18 @@ import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.MGL_Task2.manager.ReviewManager;
 import com.MGL_Task2.model.Game;
+import com.MGL_Task2.model.Review;
 
 @Repository
 public class GameDaoImpl implements GameDao {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private ReviewManager reviewManager;
 
     private Session getCurrentSession() {
 	return sessionFactory.getCurrentSession();
@@ -54,6 +59,12 @@ public class GameDaoImpl implements GameDao {
     public void deleteGame(Long game_id) {
 
 	Game game = getGame(game_id);
+
+	List<Review> reviewsForGame = reviewManager.getReviews(game_id);
+
+	if (reviewsForGame.size() > 0) {
+	    reviewManager.deleteReviews(game_id);
+	}
 
 	if (game != null) {
 	    Query hqlQuery = getCurrentSession().createQuery("delete Game where game_id = :game_id");

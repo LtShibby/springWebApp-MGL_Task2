@@ -42,7 +42,7 @@
 	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl">
 		<div class="panel panel-default" ng-hide="myVar">
 			<div class="panel-heading text-light">
-				<span class="lead">Game Registration Form </span>
+				<span class="lead">Review Submission</span>
 			</div>
 			<div class="formcontainer">
 				<div class="tablecontainer">
@@ -53,7 +53,7 @@
 									<label>Review Body*</label>
 								</td>
 								<td>
-									<textarea name="review_body" class="form-control" placeholder="What did you like/dislike about the game? [required]"
+									<textarea name="review_body" ng-model="MGL_T2_ctrl.review.review_body" class="form-control" placeholder="What did you like/dislike about the game? [required]"
 										required></textarea>
 								</td>
 							</tr>
@@ -62,7 +62,7 @@
 									<label>Author</label>
 								</td>
 								<td>
-									<input type="text" name="review_author" class="form-control"
+									<input type="text" name="review_author" ng-model="MGL_T2_ctrl.review.review_author" class="form-control"
 										placeholder="Your name (leave black to leave an anonymous review)"></input>
 								</td>
 							</tr>
@@ -71,7 +71,7 @@
 									<label>Rating</label>
 								</td>
 								<td>
-									<select id="ratingSelection" name="review_rating" class="chzn-select" style="width: 100px" required>
+									<select id="ratingSelection" name="review_rating" ng-model="MGL_T2_ctrl.review.review_rating" class="chzn-select" style="width: 100px" required>
 										<option value=1>1</option>
 										<option value=2>2</option>
 										<option value=3>3</option>
@@ -81,8 +81,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<input type="submit" class="btn btn-primary">
+								<td class="form-actions p-2">
+									<input type="submit" class="btn btn-outline-light">
+									<input type="button" value="Reset" class="btn btn-outline-light btn-sm" ng-click="MGL_T2_ctrl.resetReview()">
 								</td>
 							</tr>
 						</table>

@@ -55,7 +55,7 @@ public class Review_Controller {
     @RequestMapping(value = "/updateReview", method = RequestMethod.POST)
     public String updateReview(@ModelAttribute("review") Review updatedReview) {
 	reviewManager.updateReview(updatedReview);
-	return "redirect:/review?review_game_id=" + updatedReview.getReview_id();
+	return "redirect:/review?review_game_id=" + updatedReview.getReview_game_id();
     }
 
 }

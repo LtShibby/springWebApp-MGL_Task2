@@ -10,6 +10,12 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 				game_releaseDate : null
 			};
 			self.games = [];
+			self.review = {
+					review_id : null,
+					review_body : null,
+					review_author : null,
+					review_rating : "1"
+				};
 			self.reviews = [];
 			self.this_review_game_id = null;
 
@@ -63,6 +69,25 @@ angular.module('MGL_Task2_app').controller('MGL_Task2_Controller',
 				self.reviews = MGL_Task2_Service.fetchAllReviews(game_id);
 				$window.location.href = "review?review_game_id="+game_id;
 			}
+			
+			self.resetGame = function(){
+				self.game = {
+						game_id : null,
+						game_name : null,
+						game_genre : null,
+						game_releaseDate : null
+					};
+			}
+			
+			self.resetReview = function(){
+				self.review = {
+						review_id : null,
+						review_body : null,
+						review_author : null,
+						review_rating : "1"
+					};
+			}
+			
 
 			self.fetchAllGames();
 			self.addGameIdToNewReview();

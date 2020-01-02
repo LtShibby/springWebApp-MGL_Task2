@@ -2,8 +2,6 @@ package com.MGL_Task2.manager;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +9,6 @@ import com.MGL_Task2.model.Review;
 import com.MGL_Task2.service.Review_Service;
 
 @Service
-@Transactional
 public class ReviewManagerImpl implements ReviewManager {
 
     @Autowired
@@ -45,6 +42,11 @@ public class ReviewManagerImpl implements ReviewManager {
     @Override
     public List<Review> listReviews(Long review_game_id) {
 	return reviewService.listReviews(review_game_id);
+    }
+
+    @Override
+    public void deleteReviews(Long review_game_id) {
+	reviewService.deleteReviews(review_game_id);
     }
 
 }

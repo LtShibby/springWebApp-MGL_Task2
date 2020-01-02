@@ -11,33 +11,37 @@ import com.MGL_Task2.dao.GameDao;
 import com.MGL_Task2.model.Game;
 
 @Service
-@Transactional
 public class Game_Service_Impl implements Game_Service {
 
     @Autowired
     private GameDao gameDao;
 
     @Override
+    @Transactional
     public void saveGame(Game game) {
 	gameDao.saveGame(game);
     }
 
     @Override
+    @Transactional
     public void updateGame(Game game) {
 	gameDao.updateGame(game);
     }
 
     @Override
+    @Transactional
     public Game getGame(Long id) {
 	return gameDao.getGame(id);
     }
 
     @Override
+    @Transactional
     public void deleteGame(Long id) {
 	gameDao.deleteGame(id);
     }
 
     @Override
+    @Transactional
     public List<Game> listGames() {
 	return gameDao.listGames();
     }

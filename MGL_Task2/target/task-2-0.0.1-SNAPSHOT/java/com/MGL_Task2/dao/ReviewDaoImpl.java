@@ -84,4 +84,12 @@ public class ReviewDaoImpl implements ReviewDao {
 	Review review = getCurrentSession().get(Review.class, review_id);
 	return review;
     }
+
+    @Override
+    public void deleteReviews(Long review_game_id) {
+	Query hqlQuery = getCurrentSession().createQuery("delete Review where review_game_id = :review_game_id");
+	String review_game_id_string = String.valueOf(review_game_id);
+	hqlQuery.setParameter("review_game_id", Integer.valueOf(review_game_id_string));
+	hqlQuery.executeUpdate();
+    }
 }

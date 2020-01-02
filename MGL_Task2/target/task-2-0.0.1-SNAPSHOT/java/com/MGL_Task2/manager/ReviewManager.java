@@ -18,4 +18,6 @@ public interface ReviewManager {
 
     List<Review> listReviews(Long game_id);
 
+    void deleteReviews(Long game_id);
+
 }
