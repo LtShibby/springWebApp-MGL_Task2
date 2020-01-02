@@ -47,14 +47,8 @@ public class ReviewDaoImpl implements ReviewDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Review> getReviews(Long review_game_id) {
-
-	System.out.println("review_game_id in DAO: " + review_game_id);
 	List<Review> reviews = getCurrentSession().createQuery("from Review where review_game_id = " + review_game_id)
 		.list();
-	System.out.println("reviews in DAO: " + reviews.toString());
-	for (Review review : reviews) {
-	    System.out.println("review data = " + review.toString());
-	}
 	return reviews;
     }
 

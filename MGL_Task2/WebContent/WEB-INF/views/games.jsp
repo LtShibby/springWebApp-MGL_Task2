@@ -5,30 +5,29 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+	<script src="resources/js/app.js"></script>
+	<script src="resources/js/service/MGL_Task2.service.js"></script>
+	<script src="resources/js/controller/MGL_Task2.controller.js"></script>
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="<c:url value='/resources/images/apple-touch-icon.png' />">
+	<link rel="icon" type="image/png" sizes="32x32" href="<c:url value='/resources/images/favicon-32x32.png' />">
+	<link rel="icon" type="image/png" sizes="16x16" href="<c:url value='/resources/images/favicon-16x16.png' />">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Mist Library Task 1- Games</title>
+	<style type="text/css">
+		body {
+			background-image:
+				url('https://ak6.picdn.net/shutterstock/videos/1024598666/thumb/1.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-<script src="resources/js/app.js" /></script>
-<script src="resources/js/service/MGL_Task2.service.js"></script>
-<script src="resources/js/controller/MGL_Task2.controller.js"></script>
-
-<!-- Favicons -->
-<link rel="apple-touch-icon" sizes="180x180" href="<c:url value='/resources/images/apple-touch-icon.png' />">
-<link rel="icon" type="image/png" sizes="32x32" href="<c:url value='/resources/images/favicon-32x32.png' />">
-<link rel="icon" type="image/png" sizes="16x16" href="<c:url value='/resources/images/favicon-16x16.png' />">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Mist Library Task 1- Games</title>
-<style type="text/css">
-body {
-	background-image:
-		url('https://ak6.picdn.net/shutterstock/videos/1024598666/thumb/1.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-</style>
+	</style>
 </head>
 
 <body ng-app="MGL_Task2_app" class="ng-cloak">
@@ -40,10 +39,8 @@ body {
 		<br>
 	</nav>
 	<br>
-	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl">
-
-		Hide HTML: <input type="checkbox" ng-model="myVar">
-		<div class="panel panel-default" ng-hide="myVar">
+	<div class="container" ng-controller="MGL_Task2_Controller as MGL_T2_ctrl"> 
+		<div class="panel panel-default">
 			<div class="panel-heading text-light">
 				<span class="lead">Game Registration Form </span>
 			</div>
@@ -53,9 +50,11 @@ body {
 						<table class="table table-dark table-striped text-light">
 							<tr>
 								<td>
-									<input type="hidden" ng-model="MGL_T2_ctrl.game.game_id" /> <label class="col-md-2 control-lable text-light" for="game_name">Name*</label>
+									<input type="hidden" ng-model="MGL_T2_ctrl.game.game_id" /> <label class="col-md-2 control-lable text-light"
+										for="game_name">Name*</label>
 									<div class="col-md-9">
-										<input type="text" ng-model="MGL_T2_ctrl.game.game_name" id="game_name" class="game_name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
+										<input type="text" ng-model="MGL_T2_ctrl.game.game_name" id="game_name" class="game_name form-control input-sm"
+											placeholder="Enter the name of the new game [required]" required ng-minlength="1" />
 										<div class="has-error" ng-show="gameForm.$dirty">
 											<span ng-show="gameForm.game_name.$error.required">This is a required field</span>
 											<span ng-show="gameForm.game_name.$error.minlength">Minimum length required is 3</span>
@@ -64,13 +63,12 @@ body {
 									</div>
 								</td>
 							</tr>
-
-
 							<tr>
 								<td>
 									<label class="col-md-2 control-lable text-light" for="game_genre">Game Genre</label>
 									<div class="col-md-9">
-										<input type="text" ng-model="MGL_T2_ctrl.game.game_genre" id="game_genre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
+										<input type="text" ng-model="MGL_T2_ctrl.game.game_genre" id="game_genre" class="form-control input-sm"
+											placeholder="Enter the genre of the new game" />
 									</div>
 								</td>
 							</tr>
@@ -78,13 +76,15 @@ body {
 								<td>
 									<label class="col-md-2 control-lable text-light" for="game_releaseDate">Game Release Date (yyyy-MM-dd)</label>
 									<div class="col-md-9">
-										<input type="text" ng-model="MGL_T2_ctrl.game.game_releaseDate" id="game_releaseDate" class="form-control input-sm" placeholder="Enter relase date of the new game  (yyyy-MM-dd)" />
+										<input type="text" ng-model="MGL_T2_ctrl.game.game_releaseDate" id="game_releaseDate" class="form-control input-sm"
+											placeholder="Enter relase date of the new game  (yyyy-MM-dd)" />
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="form-actions">
-									<input type="submit" value="{{!MGL_T2_ctrl.game.game_id ? 'Add' : 'Update'}}" class="btn btn-outline-light btn-sm" ng-disabled="myForm.$invalid">
+									<input type="submit" value="{{!MGL_T2_ctrl.game.game_id ? 'Add' : 'Update'}}" class="btn btn-outline-light btn-sm"
+										ng-disabled="myForm.$invalid">
 								</td>
 							</tr>
 						</table>
@@ -94,7 +94,7 @@ body {
 			<div class="panel panel-default"></div>
 		</div>
 		<div class="panel panel-default">
-			<div class="tablecontainer">
+			<div class="tablecontainer text-center">
 				<table class="table table-dark table-striped text-light">
 					<thead>
 						<tr>
@@ -105,8 +105,8 @@ body {
 							<th>Game Name</th>
 							<th>Game Genre</th>
 							<th>Release Date</th>
-							<th>Reviews</th>
-							<th width="20%">Actions</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -121,10 +121,11 @@ body {
 								<span ng-bind="currentGame.game_genre"></span>
 							</td>
 							<td>
-								<span ng-bind="currentGame.game_releaseDate"></span>
+								<span>{{currentGame.game_releaseDate | date: 'longDate'}}</span>
 							</td>
 							<td>
-								<span ng-bind="currentGame.game_id"></span><button type="button" ng-click="MGL_T2_ctrl.fetchAllReviews(currentGame.game_id)"class="btn btn-outline-light custom-width">Reviews</button>
+								<button type="button" ng-click="MGL_T2_ctrl.fetchAllReviews(currentGame.game_id)"
+									class="btn btn-outline-light custom-width">Reviews</button>
 							</td>
 							<td>
 								<button type="button" ng-click="MGL_T2_ctrl.editGame(currentGame)" class="btn btn-outline-light custom-width">Edit</button>
@@ -139,7 +140,6 @@ body {
 			</div>
 		</div>
 	</div>
-
 </body>
 <script type="text/javascript"></script>
 

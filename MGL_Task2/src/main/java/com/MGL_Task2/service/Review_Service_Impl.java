@@ -47,4 +47,9 @@ public class Review_Service_Impl implements Review_Service {
 	return reviewDao.listReviews(game_id);
     }
 
+    @Override
+    public void deleteReviews(Long review_game_id) {
+	reviewDao.deleteReviews(review_game_id);
+    }
+
 }

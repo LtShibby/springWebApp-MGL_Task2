@@ -18,4 +18,6 @@ public interface ReviewDao {
 
     List<Review> listReviews(Long review_game_id);
 
+    void deleteReviews(Long review_game_id);
+
 }

@@ -29,12 +29,10 @@ public class Review_Controller {
     @RequestMapping(value = "/saveReview", method = RequestMethod.POST)
     public ModelAndView saveReview(@RequestParam(value = "review_game_id") String review_game_id,
 	    @ModelAttribute("review") Review review) {
-	System.out.println("review_game_id for new review: " + review_game_id);
 	if (review.getReview_author().equals("")) {
 	    review.setReview_author("anonymous");
 	}
 	review.setReview_game_id(Integer.valueOf(review_game_id));
-	System.out.println("review: " + review.toString());
 	reviewManager.saveReview(review);
 	return new ModelAndView("result", "submittedReview", review);
     }

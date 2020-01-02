@@ -10,7 +10,6 @@ com\MGL_Task2\dao\ReviewDaoImpl.class
 com\MGL_Task2\service\Review_Service.class
 com\MGL_Task2\manager\ReviewManagerImpl.class
 com\MGL_Task2\service\Game_Service.class
-com\MGL_Task2\controller\Game_Controller.class
 com\MGL_Task2\configuration\ApplicationInitializer.class
 com\MGL_Task2\manager\GameManager.class
 com\MGL_Task2\configuration\HibernateConfiguration.class

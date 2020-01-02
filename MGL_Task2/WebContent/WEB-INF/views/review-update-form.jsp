@@ -1,28 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+	<script src="../resources/js/app.js"></script>
+	<script src="../resources/js/service/MGL_Task2.service.js"></script>
+	<script src="../resources/js/controller/MGL_Task2.controller.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Mist Library Task 1-Landing</title>
+	<style type="text/css">
+		body {
+			background-image:
+				url('https://ak6.picdn.net/shutterstock/videos/1024598666/thumb/1.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-<script src="../resources/js/app.js" /></script>
-<script src="../resources/js/service/MGL_Task2.service.js"></script>
-<script src="../resources/js/controller/MGL_Task2.controller.js"></script>
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Mist Library Task 1-Landing</title>
-<style type="text/css">
-body {
-	background-image:
-		url('https://ak6.picdn.net/shutterstock/videos/1024598666/thumb/1.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-</style>
+	</style>
 </head>
 
 <body>
@@ -44,7 +45,6 @@ body {
 						<div>
 							<form:hidden path="review_id" />
 						</div>
-
 						<div>
 							<form:hidden path="review_game_id" />
 						</div>
@@ -70,7 +70,8 @@ body {
 									<label>Review Rating</label>
 								</td>
 								<td>
-									<form:select id="ratingSelection" path="review_rating" itemValue="review_rating" class="chzn-select" style="width: 100px" required="required">
+									<form:select id="ratingSelection" path="review_rating" itemValue="review_rating" class="chzn-select" style="width: 100px"
+										required="required">
 										<form:option value="1">1</form:option>
 										<form:option value="2">2</form:option>
 										<form:option value="3">3</form:option>
@@ -86,7 +87,6 @@ body {
 							</tr>
 						</table>
 					</form:form>
-
 				</div>
 			</div>
 		</div>

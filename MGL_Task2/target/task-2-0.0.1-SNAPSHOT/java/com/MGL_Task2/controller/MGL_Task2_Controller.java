@@ -35,7 +35,6 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
     public ModelAndView review(@RequestParam String review_game_id) {
-	System.out.println("review_game_id: " + review_game_id);
 	ModelAndView reviewModelAndView = new ModelAndView("review", "command", new Review());
 	List<Review> reviewsForGame = reviewManager.getReviews(Long.valueOf(review_game_id));
 
@@ -74,8 +73,6 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/fetchReviewsForGame", method = RequestMethod.PUT)
     public ResponseEntity<List<Review>> fetchReviewsForGame(@RequestBody String review_game_id) {
-	System.out.println("inside java controller review_game_id = " + review_game_id);
-
 	return new ResponseEntity<>(reviewManager.listReviews(Long.valueOf(review_game_id)), HttpStatus.OK);
     }
 
@@ -93,7 +90,6 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/deleteGame", method = RequestMethod.PUT)
     public ResponseEntity<Void> deleteGame(@RequestBody String game_id) {
-	System.out.println("game_id = " + game_id);
 	gameManager.deleteGame((Long.valueOf(game_id)));
 	return new ResponseEntity<>(HttpStatus.OK);
     }
