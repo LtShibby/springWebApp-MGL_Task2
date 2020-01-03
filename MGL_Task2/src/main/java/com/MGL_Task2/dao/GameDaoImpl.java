@@ -31,12 +31,15 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
-    public void saveGame(Game game) {
-	getCurrentSession().save(game);
+    public Game saveGame(Game game) {
+	if (game != null) {
+	    getCurrentSession().save(game);
+	}
+	return game;
     }
 
     @Override
-    public void updateGame(Game game) {
+    public Game updateGame(Game game) {
 
 	CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
 	CriteriaUpdate<Game> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Game.class);
@@ -47,6 +50,8 @@ public class GameDaoImpl implements GameDao {
 	criteriaUpdate.where(criteriaBuilder.equal(rootGame.get("game_id"), game.getGame_id()));
 
 	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();
+
+	return game;
     }
 
     @Override
@@ -56,13 +61,13 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
-    public void deleteGame(Long game_id) {
+    public Game deleteGame(Long game_id) {
 
 	Game game = getGame(game_id);
 
-	List<Review> reviewsForGame = reviewManager.getReviews(game_id);
+	List<Review> reviewsToDelete = reviewManager.getReviews(game_id);
 
-	if (reviewsForGame.size() > 0) {
+	if (reviewsToDelete.size() > 0) {
 	    reviewManager.deleteReviews(game_id);
 	}
 
@@ -71,6 +76,8 @@ public class GameDaoImpl implements GameDao {
 	    hqlQuery.setParameter("game_id", game_id);
 	    hqlQuery.executeUpdate();
 	}
+
+	return game;
     }
 
     @Override

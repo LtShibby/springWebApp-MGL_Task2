@@ -6,18 +6,16 @@ import com.MGL_Task2.model.Review;
 
 public interface ReviewDao {
 
-    void saveReview(Review review);
+    Review saveReview(Review review);
 
-    void updateReview(Review review);
+    Review updateReview(Review review);
 
     Review getReview(Long id);
 
     List<Review> getReviews(Long review_game_id);
 
-    void deleteReview(Long id);
+    Review deleteReview(Long id);
 
-    List<Review> listReviews(Long review_game_id);
-
-    void deleteReviews(Long review_game_id);
+    List<Review> deleteReviews(Long review_game_id);
 
 }

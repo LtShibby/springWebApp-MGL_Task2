@@ -78,7 +78,7 @@ body {
 							<tr>
 								<td class="form-actions p-2">
 									<input type="submit" value="{{!MGL_T2_ctrl.game.game_id ? 'Add' : 'Update'}}" class="btn btn-outline-light" ng-disabled="myForm.$invalid">
-									<input type="button" value="Reset" class="btn btn-outline-light btn-sm" ng-click="MGL_T2_ctrl.resetGame()"> 
+									<input type="button" value="Reset" class="btn btn-light" ng-click="MGL_T2_ctrl.resetGame()"> 
 								</td>
 							</tr>
 						</table>
@@ -99,8 +99,8 @@ body {
 							<th>Game Name</th>
 							<th>Game Genre</th>
 							<th>Release Date</th>
-							<th></th>
-							<th></th>
+							<th>Reviews</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>

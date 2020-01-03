@@ -83,7 +83,7 @@
 							<tr>
 								<td class="form-actions p-2">
 									<input type="submit" class="btn btn-outline-light">
-									<input type="button" value="Reset" class="btn btn-outline-light btn-sm" ng-click="MGL_T2_ctrl.resetReview()">
+									<input type="button" value="Reset" class="btn btn-light" ng-click="MGL_T2_ctrl.resetReview()">
 								</td>
 							</tr>
 						</table>

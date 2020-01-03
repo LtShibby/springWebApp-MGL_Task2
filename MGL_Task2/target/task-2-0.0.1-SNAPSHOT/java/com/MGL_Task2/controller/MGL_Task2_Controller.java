@@ -28,9 +28,9 @@ public class MGL_Task2_Controller {
     @Autowired
     private ReviewManager reviewManager;
 
-    @RequestMapping(value = { "/", "/index", "/home" }, method = RequestMethod.GET)
-    public String landing() {
-	return "index";
+    @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+    public String home() {
+	return "home";
     }
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
@@ -61,11 +61,6 @@ public class MGL_Task2_Controller {
 	return new ModelAndView("reviews", "command", new Review());
     }
 
-    @RequestMapping(value = "/gameList", method = RequestMethod.GET)
-    public String gameList() {
-	return "gameList";
-    }
-
     @RequestMapping(value = "/fetchAllGames", method = RequestMethod.GET)
     public ResponseEntity<List<Game>> fetchAllGames() {
 	return new ResponseEntity<>(gameManager.listGames(), HttpStatus.OK);
@@ -73,7 +68,7 @@ public class MGL_Task2_Controller {
 
     @RequestMapping(value = "/fetchReviewsForGame", method = RequestMethod.PUT)
     public ResponseEntity<List<Review>> fetchReviewsForGame(@RequestBody String review_game_id) {
-	return new ResponseEntity<>(reviewManager.listReviews(Long.valueOf(review_game_id)), HttpStatus.OK);
+	return new ResponseEntity<>(reviewManager.getReviews(Long.valueOf(review_game_id)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createGame", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

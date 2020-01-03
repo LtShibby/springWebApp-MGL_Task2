@@ -40,11 +40,6 @@ public class ReviewManagerImpl implements ReviewManager {
     }
 
     @Override
-    public List<Review> listReviews(Long review_game_id) {
-	return reviewService.listReviews(review_game_id);
-    }
-
-    @Override
     public void deleteReviews(Long review_game_id) {
 	reviewService.deleteReviews(review_game_id);
     }

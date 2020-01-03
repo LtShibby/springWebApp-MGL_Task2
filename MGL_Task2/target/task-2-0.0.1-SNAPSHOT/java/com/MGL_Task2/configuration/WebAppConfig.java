@@ -1,3 +1,4 @@
+
 package com.MGL_Task2.configuration;
 
 import org.springframework.context.MessageSource;

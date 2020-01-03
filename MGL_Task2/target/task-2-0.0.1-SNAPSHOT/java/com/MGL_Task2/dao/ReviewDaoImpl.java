@@ -25,12 +25,15 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     @Override
-    public void saveReview(Review review) {
-	getCurrentSession().save(review);
+    public Review saveReview(Review review) {
+	if (review != null) {
+	    getCurrentSession().save(review);
+	}
+	return review;
     }
 
     @Override
-    public void updateReview(Review review) {
+    public Review updateReview(Review review) {
 
 	CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
 	CriteriaUpdate<Review> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Review.class);
@@ -42,6 +45,8 @@ public class ReviewDaoImpl implements ReviewDao {
 	criteriaUpdate.where(criteriaBuilder.equal(rootReview.get("review_id"), review.getReview_id()));
 
 	getCurrentSession().createQuery(criteriaUpdate).executeUpdate();
+
+	return review;
     }
 
     @SuppressWarnings("unchecked")
@@ -53,30 +58,17 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     @Override
-    public void deleteReview(Long review_id) {
+    public Review deleteReview(Long review_id) {
 
-	Review review = getReview(review_id);
+	Review reviewToDelete = getReview(review_id);
 
-	if (review != null) {
+	if (reviewToDelete != null) {
 	    Query hqlQuery = getCurrentSession().createQuery("delete Review where review_id = :review_id");
 	    hqlQuery.setParameter("review_id", review_id);
 	    hqlQuery.executeUpdate();
 	}
-    }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Review> listReviews(Long review_game_id) {
-
-	List<Review> reviews = getReviews(review_game_id);
-
-	if (reviews != null) {
-	    Query hqlQuery = getCurrentSession().createQuery("delete Game where game_id = :game_id");
-	    hqlQuery.setParameter("game_id", review_game_id);
-	    hqlQuery.executeUpdate();
-	}
-
-	return getCurrentSession().createQuery("from Review").list();
+	return reviewToDelete;
     }
 
     @Override
@@ -85,11 +77,19 @@ public class ReviewDaoImpl implements ReviewDao {
 	return review;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void deleteReviews(Long review_game_id) {
-	Query hqlQuery = getCurrentSession().createQuery("delete Review where review_game_id = :review_game_id");
-	String review_game_id_string = String.valueOf(review_game_id);
-	hqlQuery.setParameter("review_game_id", Integer.valueOf(review_game_id_string));
-	hqlQuery.executeUpdate();
+    public List<Review> deleteReviews(Long review_game_id) {
+	List<Review> reviewsToDelete = getCurrentSession()
+		.createQuery("from Review where review_game_id = " + review_game_id).list();
+
+	if (reviewsToDelete.size() > 0) {
+	    Query hqlQuery = getCurrentSession().createQuery("delete Review where review_game_id = :review_game_id");
+	    String review_game_id_string = String.valueOf(review_game_id);
+	    hqlQuery.setParameter("review_game_id", Integer.valueOf(review_game_id_string));
+	    hqlQuery.executeUpdate();
+	}
+
+	return reviewsToDelete;
     }
 }

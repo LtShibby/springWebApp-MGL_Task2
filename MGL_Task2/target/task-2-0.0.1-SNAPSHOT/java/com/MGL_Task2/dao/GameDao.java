@@ -6,13 +6,13 @@ import com.MGL_Task2.model.Game;
 
 public interface GameDao {
 
-    void saveGame(Game game);
+    Game saveGame(Game game);
 
-    void updateGame(Game game);
+    Game updateGame(Game game);
 
     Game getGame(Long id);
 
-    void deleteGame(Long id);
+    Game deleteGame(Long id);
 
     List<Game> listGames();
 
